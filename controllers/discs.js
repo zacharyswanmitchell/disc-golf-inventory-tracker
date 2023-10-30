@@ -11,49 +11,37 @@ module.exports = {
   delete: deleteDisc,
 };
 
-function index(req, res) {
-  Disc.find({}, function (err, discs) {
-    res.render("discs/index", { title: "All Discs", discs });
-  });
+async function index(req, res) {
+  const discs = await Disc.find({});
+  res.render("discs/index", { title: "All Discs", discs });
 }
 
-function newDisc(req, res) {
-  Bag.find({}, function (err, bags) {
-    res.render("discs/new", { title: "Add Disc", bags });
-  });
+async function newDisc(req, res) {
+  const bags = await Bag.find({});
+  res.render("discs/new", { title: "Add Disc", bags });
 }
 
-function show(req, res) {
-  Disc.findById(req.params.id)
-    .populate("bag")
-    .exec(function (err, disc) {
-      res.render("discs/show", { title: "Disc Details", disc });
-    });
+async function show(req, res) {
+  const disc = await Disc.findById(req.params.id).populate("bag");
+  res.render("discs/show", { title: "Disc Details", disc });
 }
 
-function create(req, res) {
+async function create(req, res) {
   const disc = new Disc(req.body);
-  disc.save(function (err) {
-    if (err) return res.redirect("/discs/new");
-    res.redirect("/discs");
-  });
+  await disc.save();
+  res.redirect("/discs");
 }
 
-function edit(req, res) {
-  Disc.findById(req.params.id, function (err, disc) {
-    res.render("discs/edit", { title: "Edit Disc", disc });
-  });
+async function edit(req, res) {
+  const disc = await Disc.findById(req.params.id);
+  const bags = await Bag.find({});
+  res.render("discs/edit", { title: "Edit Disc", disc, bags });
 }
 
 function update(req, res) {
-  Disc.findByIdAndUpdate(
-    req.params.id,
-    req.body,
-    { new: true },
-    function (err, disc) {
-      res.redirect(`/discs/${disc._id}`);
-    }
-  );
+  Disc.findByIdAndUpdate(req.params.id, req.body, function (err, disc) {
+    res.redirect(`/discs/${disc._id}`);
+  });
 }
 
 function deleteDisc(req, res) {
@@ -61,3 +49,5 @@ function deleteDisc(req, res) {
     res.redirect("/discs");
   });
 }
+
+// Compare this snippet from views/discs/index.ejs:
