@@ -1,0 +1,21 @@
+<%- include('../partials/header') %>
+
+<h1>New Bag</h1>
+
+<form action="/bags" method="POST">
+    <label for="name">Name</label>
+    <input type="text" name="name" id="name" />
+    <br />
+    <label for="brand">Brand</label>
+    <input type="text" name="brand" id="brand" />
+    <br />
+    <label for="color">Color</label>
+    <input type="text" name="color" id="color" />
+    <br />
+    <label for="capacity">Capacity</label>
+    <input type="number" name="capacity" id="capacity" />
+    </select>
+    <br />
+    <input type="submit" value="Add Bag" />
+
+<%- include('../partials/footer') %>
