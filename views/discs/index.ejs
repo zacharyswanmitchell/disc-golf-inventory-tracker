@@ -3,6 +3,35 @@
   <body>
     <h1><%= title %></h1>
     <p>Welcome to <%= title %></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Brand</th>
+          <th>Type</th>
+          <th>Color</th>
+          <th>Image</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% discs.forEach(function(disc) { %>
+          <tr>
+            <td><%= disc.name %></td>
+            <td><%= disc.brand %></td>
+            <td><%= disc.type %></td>
+            <td><%= disc.color %></td>
+            <td><img src="<%= disc.image %>"></td>
+            <td>
+              <a href="/discs/<%= disc.id %>">View</a>
+              <a href="/discs/<%= disc.id %>/edit">Edit</a>
+              <form method="POST" action="/discs/<%= disc.id %>?_method=DELETE">
+                <button type="submit">Delete</button>
+              </form>
+            </td>
+          </tr>
+        <% }) %>
+      </tbody>
+    </table>
   </body>
 </html>
 

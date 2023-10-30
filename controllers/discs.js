@@ -27,8 +27,13 @@ async function show(req, res) {
 }
 
 async function create(req, res) {
+  const bag = await Bag.findById(req.body.bag);
   const disc = new Disc(req.body);
+  bag.discs.push(disc);
   await disc.save();
+  await bag.save();
+  // console.log(bag);
+  // console.log(disc);
   res.redirect("/discs");
 }
 

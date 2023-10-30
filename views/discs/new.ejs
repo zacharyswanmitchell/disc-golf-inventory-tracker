@@ -3,14 +3,17 @@
 <h1>New Disc</h1>
 
 <form action="/discs" method="POST">
-  <label for="name">Name</label>
+  <label for="name">Name*</label>
   <input type="text" name="name" id="name" />
   <br />
-  <label for="brand">Brand</label>
+  <label for="brand">Brand*</label>
   <input type="text" name="brand" id="brand" />
   <br />
-  <label for="type">Type</label>
+  <label for="type">Type*</label>
   <input type="text" name="type" id="type" />
+  <br />
+  <label for="color">Color*</label>
+  <input type="text" name="color" id="color" />
   <br />
   <label for="speed">Speed</label>
   <input type="number" name="speed" id="speed" />
@@ -24,9 +27,7 @@
   <label for="fade">Fade</label>
   <input type="number" name="fade" id="fade" />
   <br />
-  <label for="color">Color</label>
-  <input type="text" name="color" id="color" />
-  <br />
+  
   <label for="bag">Bag</label>
   <select name="bag" id="bag">
     <% for (let i = 0; i < bags.length; i++) { %>

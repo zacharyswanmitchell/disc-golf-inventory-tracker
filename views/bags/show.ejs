@@ -1,0 +1,37 @@
+<%- include('../partials/header') %>
+
+<h1><%= title %></h1>
+<h2>Bag Name: <%= bag.name %></h2>
+<h2>Color: <%= bag.color %></h2>
+<h2>Capacity: <%= bag.capacity %></h2>
+<h2>Image: <%= bag.image %></h2>
+<h2>Discs:</h2>
+<% if (bag.discs.length) { %>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Brand</th>
+      <th>Type</th>
+      <th>Color</th>
+      <th>Image</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% bag.discs.forEach(d => { %>
+    <tr>
+      <td><%= d.name %></td>
+      <td><%= d.brand %></td>
+      <td><%= d.type %></td>
+      <td><%= d.color %></td>
+      <td><img src="<%= d.image %>" /></td>
+    </tr>
+    <% }); %>
+  </tbody>
+</table>
+<% } else { %>
+<p>No discs in this bag</p>
+<% } %>
+
+  <%- include('../partials/footer') %>
+

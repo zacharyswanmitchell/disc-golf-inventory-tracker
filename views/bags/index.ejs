@@ -3,6 +3,35 @@
   <body>
     <h1><%= title %></h1>
     <p>Welcome to <%= title %></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Brand</th>
+          <th>Color</th>
+          <th>Capacity</th>
+          <th>Image</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% bags.forEach(function(bag) { %>
+          <tr>
+            <td><%= bag.name %></td>
+            <td><%= bag.brand %></td>
+            <td><%= bag.color %></td>
+            <td><%= bag.capacity %></td>
+            <td><img src="<%= bag.image %>"></td>
+            <td>
+              <a href="/bags/<%= bag.id %>">View</a>
+              <a href="/bags/<%= bag.id %>/edit">Edit</a>
+              <form method="POST" action="/bags/<%= bag.id %>?_method=DELETE">
+                <button type="submit">Delete</button>
+              </form>
+            </td>
+          </tr>
+        <% }) %>
+      </tbody>
+    </table>
   </body>
 </html>
 
