@@ -44,8 +44,26 @@ async function edit(req, res) {
 }
 
 async function update(req, res) {
-  await Disc.findByIdAndUpdate(req.params.id, req.body);
-  res.redirect(`/discs/${disc._id}`);
+  console.log(req.body);
+  const disc = await Disc.findById(req.params.id);
+  console.log(disc);
+  if (disc.bag) {
+    const oldBag = await Bag.findById(disc.bag);
+    console.log(oldBag);
+    oldBag.discs.remove(disc);
+    await oldBag.save();
+    const newBag = await Bag.findById(req.body.bag);
+    console.log(newBag);
+    if (newBag) {
+      newBag.discs.push(disc);
+      await newBag.save();
+    }
+    await Disc.findByIdAndUpdate(req.params.id, req.body);
+    res.redirect(`/discs/${disc._id}`);
+  } else {
+    await Disc.findByIdAndUpdate(req.params.id, req.body);
+    res.redirect(`/discs/${disc._id}`);
+  }
 }
 
 async function deleteDisc(req, res) {

@@ -1,21 +1,46 @@
 <%- include('../partials/header') %>
 
 <h1><%= title %></h1>
-<h2>Disc Name: <%= disc.name %></h2>
 
-<h2>Brand: <%= disc.brand %></h2>
-<h2>Type: <%= disc.type %></h2>
-<h2>Color: <%= disc.color %></h2>
-<h2>Speed: <%= disc.speed %></h2>
-<h2>Glide: <%= disc.glide %></h2>
-<h2>Turn: <%= disc.turn %></h2>
-<h2>Fade: <%= disc.fade %></h2>
-<h2>Image: <%= disc.image %></h2>
-<h2>Bag: <% if (disc.bag) { %><%= disc.bag.name %><% } else { %>None<% } %></h2>
-<select name="bag" id="bag">
+
+<form method="POST" action="/discs/<%= disc.id %>?_method=PUT">
+  <label for="brand">Disc Name: </label>
+  <input type="text" name="name" id="name" value="<%= disc.name %> " />
+  <br />
+  <label for="brand">Brand: </label>
+  <input type="text" name="brand" id="brand" value="<%= disc.brand %> " />
+  <br />
+  <label for="type">Type: </label>
+  <input type="text" name="type" id="type" value="<%= disc.type %> " />
+  <br />
+  <label for="color">Color: </label>
+  <input type="text" name="color" id="color" value="<%= disc.color %> " />
+  <br />
+  <label for="speed">Speed: </label>
+  <input type="number" name="speed" id="speed" value="<%= disc.speed %> " />
+  <br />
+  <label for="glide">Glide: </label>
+  <input type="number" name="glide" id="glide" value="<%= disc.glide %> " />
+  <br />
+  <label for="turn">Turn: </label>
+  <input type="number" name="turn" id="turn" value="<%= disc.turn %> " />
+  <br />
+  <label for="fade">Fade: </label>
+  <input type="number" name="fade" id="fade" value="<%= disc.fade %> " />
+  <br />
+  <label for="image">Image: </label>
+  <input type="file" name="image" id="image" value="<%= disc.image %> " />
+  <br />
+  <h2>
+    Bag: <% if (disc.bag) { %><%= disc.bag.name %><% } else { %>None<% } %>
+  </h2>
+  <select name="bag" id="bag">
     <% for (let i = 0; i < bags.length; i++) { %>
-        <option value="<%= bags[i].id %>"><%= bags[i].name %></option>
+    <option value="<%= bags[i].id %>"><%= bags[i].name %></option>
     <% } %>
-</select>
+  </select>
+  <br />
+  <input type="submit" value="Update Disc" />
+</form>
 
-  <%- include('../partials/footer') %>  
+<%- include('../partials/footer') %>
