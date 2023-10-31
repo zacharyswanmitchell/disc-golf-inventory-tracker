@@ -12,5 +12,10 @@
 <h2>Fade: <%= disc.fade %></h2>
 <h2>Image: <%= disc.image %></h2>
 <h2>Bag: <% if (disc.bag) { %><%= disc.bag.name %><% } else { %>None<% } %></h2>
+<select name="bag" id="bag">
+    <% for (let i = 0; i < bags.length; i++) { %>
+        <option value="<%= bags[i].id %>"><%= bags[i].name %></option>
+    <% } %>
+</select>
 
   <%- include('../partials/footer') %>  

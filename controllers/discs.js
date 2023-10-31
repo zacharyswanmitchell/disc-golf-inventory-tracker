@@ -54,6 +54,7 @@ async function deleteDisc(req, res) {
     const bag = await Bag.findById(disc.bag);
     bag.discs.remove(disc);
     await bag.save();
+  } else {
     await Disc.findByIdAndDelete(req.params.id);
     res.redirect("/discs");
   }
