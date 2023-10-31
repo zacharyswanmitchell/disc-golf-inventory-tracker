@@ -37,11 +37,12 @@ async function edit(req, res) {
 }
 
 async function update(req, res) {
-  await Bag.findByIdAndUpdate(req.params.id, req.body);
+  const bag = await Bag.findByIdAndUpdate(req.params.id, req.body);
   res.redirect(`/bags/${bag._id}`);
 }
 
 async function deleteBag(req, res) {
+  const bag = await Bag.findById(req.params.id);
   if (bag.discs.length > 0) {
     const disc = await Disc.findById(bag.discs[0]);
     disc.bag = null;
