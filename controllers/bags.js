@@ -36,14 +36,12 @@ async function edit(req, res) {
   res.render("bags/edit", { title: "Edit Bag", bag });
 }
 
-function update(req, res) {
-  Bag.findByIdAndUpdate(req.params.id, req.body, function (err, bag) {
-    res.redirect(`/bags/${bag._id}`);
-  });
+async function update(req, res) {
+  await Bag.findByIdAndUpdate(req.params.id, req.body);
+  res.redirect(`/bags/${bag._id}`);
 }
 
-function deleteBag(req, res) {
-  Bag.findByIdAndDelete(req.params.id, function (err, bag) {
-    res.redirect("/bags");
-  });
+async function deleteBag(req, res) {
+  await Bag.findByIdAndDelete(req.params.id);
+  res.redirect("/bags");
 }

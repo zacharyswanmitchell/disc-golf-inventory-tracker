@@ -25,6 +25,12 @@
       <td><%= d.type %></td>
       <td><%= d.color %></td>
       <td><img src="<%= d.image %>" /></td>
+      <td>
+        <a href="/discs/<%= d.id %>">View</a>
+        <a href="/discs/<%= d.id %>/edit">Edit</a>
+        <form method="POST" action="/discs/<%= d.id %>?_method=DELETE">
+          <button type="submit">Delete</button>
+        </form>
     </tr>
     <% }); %>
   </tbody>

@@ -43,16 +43,20 @@ async function edit(req, res) {
   res.render("discs/edit", { title: "Edit Disc", disc, bags });
 }
 
-function update(req, res) {
-  Disc.findByIdAndUpdate(req.params.id, req.body, function (err, disc) {
-    res.redirect(`/discs/${disc._id}`);
-  });
+async function update(req, res) {
+  await Disc.findByIdAndUpdate(req.params.id, req.body);
+  res.redirect(`/discs/${disc._id}`);
 }
 
-function deleteDisc(req, res) {
-  Disc.findByIdAndDelete(req.params.id, function (err, disc) {
+async function deleteDisc(req, res) {
+  const disc = await Disc.findById(req.params.id);
+  if (disc.bag) {
+    const bag = await Bag.findById(disc.bag);
+    bag.discs.remove(disc);
+    await bag.save();
+    await Disc.findByIdAndDelete(req.params.id);
     res.redirect("/discs");
-  });
+  }
 }
 
 // Compare this snippet from views/discs/index.ejs:
