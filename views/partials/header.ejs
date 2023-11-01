@@ -9,6 +9,7 @@
   </head>
   <body>
     <nav>
+      <% if (user) { %>
       <a href="/">Home</a>
       &nbsp;|&nbsp;
       <a href="/shelf">Shelf</a>
@@ -21,5 +22,8 @@
       &nbsp;|&nbsp;
       <a href="/discs">All Disc</a>
       &nbsp;|&nbsp;
-      <a href="/logout">Logout</a>
+        <a href="/logout">LOG OUT</a>
+        <% } else { %>
+          <a href="/auth/google" class="login">LOG IN&nbsp;<img src="https://i.imgur.com/FHjYyi0.png"></a>
+          <% } %>
     </nav>
