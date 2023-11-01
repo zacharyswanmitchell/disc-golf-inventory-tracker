@@ -3,11 +3,11 @@
 <h1>New Bag</h1>
 
 <form action="/bags" method="POST">
-    <label for="name">Name</label>
-    <input type="text" name="name" id="name" />
-    <br />
     <label for="brand">Brand</label>
     <input type="text" name="brand" id="brand" />
+    <br />
+    <label for="name">Name</label>
+    <input type="text" name="name" id="name" />
     <br />
     <label for="color">Color</label>
     <input type="text" name="color" id="color" />
@@ -16,9 +16,9 @@
     <input type="number" name="capacity" id="capacity" />
     </select>
     <br />
-    <label for="image">Image</label>
+    <!-- <label for="image">Image</label>
     <input type="file" name="image" id="image"/>
-    <br />
+    <br /> -->
     <input type="submit" value="Add Bag" />
 
 <%- include('../partials/footer') %>

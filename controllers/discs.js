@@ -19,7 +19,8 @@ async function index(req, res) {
 
 async function newDisc(req, res) {
   const bags = await Bag.find({});
-  res.render("discs/new", { title: "Add Disc", bags });
+  const shelf = await User.findById(req.user._id).shelf;
+  res.render("discs/new", { title: "Add Disc", bags, shelf });
 }
 
 async function show(req, res) {
@@ -28,20 +29,33 @@ async function show(req, res) {
 }
 
 async function create(req, res) {
-  const bag = await Bag.findById(req.body.bag);
-  const disc = new Disc(req.body);
-  bag.discs.push(disc);
-  await disc.save();
-  await bag.save();
-  // console.log(bag);
-  // console.log(disc);
-  res.redirect("/discs");
+  try {
+    const user = await User.findById(req.user._id);
+    const shelf = user.shelf;
+    const disc = new Disc(req.body);
+    await disc.save();
+    if (req.body.bag._id === shelf._id.toString()) {
+      shelf.discs.push(disc);
+      await shelf.save();
+    } else {
+      const bag = await Bag.findById(req.body.bag);
+      if (bag) {
+        bag.discs.push(disc);
+        await bag.save();
+      }
+    }
+    res.redirect("/discs");
+  } catch (error) {
+    console.error(error);
+    res.status(500).send("An error occurred while creating the disc");
+  }
 }
 
 async function edit(req, res) {
+  const shelf = await User.findById(req.user._id).shelf;
   const disc = await Disc.findById(req.params.id);
   const bags = await Bag.find({});
-  res.render("discs/edit", { title: "Edit Disc", disc, bags });
+  res.render("discs/edit", { title: "Edit Disc", disc, bags, shelf });
 }
 
 async function update(req, res) {

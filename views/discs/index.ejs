@@ -1,8 +1,10 @@
 <%- include('../partials/header') %>
 
-  <body>
-    <h1><%= title %></h1>
-    <p>Welcome to <%= title %></p>
+<body>
+  <h1><%= title %></h1>
+  <% if (discs.length === 0) { %>
+    <p>No discs</p>
+  <% } else { %>
     <table>
       <thead>
         <tr>
@@ -32,7 +34,5 @@
         <% }) %>
       </tbody>
     </table>
-  </body>
-</html>
-
-<%- include('../partials/footer') %>
+  <% } %>
+</body>

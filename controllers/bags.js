@@ -47,7 +47,7 @@ async function deleteBag(req, res) {
   const bag = await Bag.findById(req.params.id);
   if (bag.discs.length > 0) {
     const disc = await Disc.findById(bag.discs[0]);
-    disc.bag = null;
+    disc.bag = req.user.shelf;
     await disc.save();
   }
   await Bag.findByIdAndDelete(req.params.id);

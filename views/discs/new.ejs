@@ -3,11 +3,11 @@
 <h1>New Disc</h1>
 
 <form action="/discs" method="POST">
-  <label for="name">Name*</label>
-  <input type="text" name="name" id="name" />
-  <br />
   <label for="brand">Brand*</label>
   <input type="text" name="brand" id="brand" />
+  <br />
+  <label for="name">Name*</label>
+  <input type="text" name="name" id="name" />
   <br />
   <label for="type">Type*</label>
   <input type="text" name="type" id="type" />
@@ -30,12 +30,13 @@
   
   <label for="bag">Bag</label>
   <select name="bag" id="bag">
+    <option value="<%= user.shelf._id %>">Shelf</option>
     <% for (let i = 0; i < bags.length; i++) { %>
-      <option value="<%= bags[i].id %>"><%= bags[i].name %></option>
+      <option value="<%= bags[i]._id %>"><%= bags[i].name %></option>
     <% } %>
   </select>
   <br />
   <input type="submit" value="Add Disc" />
-</form>
+</form> 
 
 <%- include('../partials/footer') %>
