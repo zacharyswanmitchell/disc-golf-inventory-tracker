@@ -9,6 +9,7 @@ module.exports = {
   edit,
   update,
   delete: deleteBag,
+  shelf
 };
 
 async function index(req, res) {
@@ -51,3 +52,9 @@ async function deleteBag(req, res) {
   await Bag.findByIdAndDelete(req.params.id);
     res.redirect("/bags");
 };
+
+async function shelf(req, res) {
+  const shelf = await Bag.findById(req.user.shelf);
+  console.log(shelf);
+  res.render("bags/shelf", { title: "Disc Shelf", shelf });
+}

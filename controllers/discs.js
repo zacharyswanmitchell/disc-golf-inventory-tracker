@@ -73,5 +73,3 @@ async function deleteDisc(req, res) {
     res.redirect("/discs");
   }
 }
-
-// Compare this snippet from views/discs/index.ejs:

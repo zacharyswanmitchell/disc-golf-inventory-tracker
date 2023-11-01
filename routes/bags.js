@@ -5,6 +5,8 @@ const bagsCtrl = require("../controllers/bags");
 
 router.get("/", ensureLoggedIn, bagsCtrl.index); // GET /bags
 
+router.get("/shelf", ensureLoggedIn, bagsCtrl.shelf); // GET /bags/shelf
+
 router.get("/new", ensureLoggedIn, bagsCtrl.new); // GET /bags/new
 
 router.get("/:id", ensureLoggedIn, bagsCtrl.show); // GET /bags/123
