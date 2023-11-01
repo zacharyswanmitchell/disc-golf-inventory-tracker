@@ -1,5 +1,6 @@
 const Disc = require("../models/disc");
 const Bag = require("../models/bag");
+const User = require("../models/user");
 
 module.exports = {
   index,
@@ -54,7 +55,6 @@ async function deleteBag(req, res) {
 };
 
 async function shelf(req, res) {
-  const shelf = await Bag.findById(req.user.shelf);
-  console.log(shelf);
-  res.render("bags/shelf", { title: "Disc Shelf", shelf });
+  const shelf = await User.findById(req.user._id).populate("shelf.discs");
+  res.render("bags/shelf", { title: "My Shelf", shelf });
 }

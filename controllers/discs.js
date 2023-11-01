@@ -1,5 +1,6 @@
 const Disc = require("../models/disc");
 const Bag = require("../models/bag");
+const User = require("../models/user");
 
 module.exports = {
   index,
