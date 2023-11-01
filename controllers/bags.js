@@ -55,6 +55,7 @@ async function deleteBag(req, res) {
 };
 
 async function shelf(req, res) {
-  const shelf = await User.findById(req.user._id).populate("shelf.discs");
+  const user = await User.findById(req.user._id)
+  const shelf = user.shelf;
   res.render("bags/shelf", { title: "My Shelf", shelf });
 }

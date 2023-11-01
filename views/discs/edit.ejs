@@ -35,6 +35,7 @@
     Bag: <% if (disc.bag) { %><%= disc.bag.name %><% } else { %>None<% } %>
   </h2>
   <select name="bag" id="bag">
+    <option value="<%= user.shelf._id %>">Shelf</option>
     <% for (let i = 0; i < bags.length; i++) { %>
     <option value="<%= bags[i].id %>"><%= bags[i].name %></option>
     <% } %>

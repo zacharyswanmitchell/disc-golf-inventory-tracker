@@ -59,23 +59,43 @@ async function edit(req, res) {
 }
 
 async function update(req, res) {
-  const disc = await Disc.findById(req.params.id);
-  if (disc.bag) {
-    const oldBag = await Bag.findById(disc.bag);
-    oldBag.discs.remove(disc);
-    await oldBag.save();
-    const newBag = await Bag.findById(req.body.bag);
-    if (newBag) {
-      newBag.discs.push(disc);
-      await newBag.save();
+  try {
+    console.log("Request body:", req.body);  // Log the request body
+    let disc = await Disc.findById(req.params.id);
+    console.log("Disc:", disc);  // Log the disc
+    const user = await User.findById(req.user._id);
+    console.log("User:", user);  // Log the user
+    const shelf = user.shelf;
+    if (disc.bag) {
+      const oldBag = await Bag.findById(disc.bag);
+      console.log("Old bag:", oldBag);  // Log the old bag
+      if (oldBag) {
+        oldBag.discs.remove(disc._id);
+        await oldBag.save();
+      }
     }
-    await Disc.findByIdAndUpdate(req.params.id, req.body);
+    if (req.body.bag === shelf._id.toString()) {
+      shelf.discs.push(disc._id);
+      await user.save();
+    } else {
+      const newBag = await Bag.findById(req.body.bag);
+      console.log("New bag:", newBag);  // Log the new bag
+      if (newBag) {
+        newBag.discs.push(disc._id);
+        await newBag.save();
+      } else {
+        return res.status(400).send("Invalid bag ID");
+      }
+    }
+    Object.assign(disc, req.body);
+    await disc.save();
     res.redirect(`/discs/${disc._id}`);
-  } else {
-    await Disc.findByIdAndUpdate(req.params.id, req.body);
-    res.redirect(`/discs/${disc._id}`);
+  } catch (error) {
+    console.error('An error occurred while updating the disc:', error);
+    res.status(500).send("An error occurred while updating the disc");
   }
 }
+
 
 async function deleteDisc(req, res) {
   const disc = await Disc.findById(req.params.id);
