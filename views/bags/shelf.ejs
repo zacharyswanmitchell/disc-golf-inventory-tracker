@@ -1,7 +1,7 @@
 <%- include('../partials/header') %>
 
 <h2>Shelf:</h2>
-<% if (shelf.discs) { %>
+<% if (user.shelf.discs) { %>
 <table>
   <thead>
     <tr>
@@ -13,13 +13,12 @@
     </tr>
   </thead>
   <tbody>
-    <% shelf.discs.forEach(d => { %>
+    <% user.shelf.discs.forEach(d => { %>
     <tr>
       <td><%= d.name %></td>
       <td><%= d.brand %></td>
       <td><%= d.type %></td>
       <td><%= d.color %></td>
-      <td><img src="<%= d.image %>" /></td>
       <td>
         <a href="/discs/<%= d.id %>">View</a>
         <a href="/discs/<%= d.id %>/edit">Edit</a>

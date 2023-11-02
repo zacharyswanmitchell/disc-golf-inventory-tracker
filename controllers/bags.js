@@ -10,7 +10,7 @@ module.exports = {
   edit,
   update,
   delete: deleteBag,
-  shelf
+  shelf,
 };
 
 async function index(req, res) {
@@ -51,11 +51,11 @@ async function deleteBag(req, res) {
     await disc.save();
   }
   await Bag.findByIdAndDelete(req.params.id);
-    res.redirect("/bags");
-};
+  res.redirect("/bags");
+}
 
 async function shelf(req, res) {
-  const user = await User.findById(req.user._id)
+  const user = await User.findById(req.user._id).populate("shelf.discs");
   const shelf = user.shelf;
-  res.render("bags/shelf", { title: "My Shelf", shelf });
+  res.render("bags/shelf", { title: "My Shelf", user });
 }
