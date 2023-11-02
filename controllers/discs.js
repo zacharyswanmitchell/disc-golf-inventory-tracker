@@ -47,7 +47,7 @@ async function create(req, res) {
         await bag.save();
       }
     }
-    res.redirect("/bags/shelf");
+    res.redirect("/discs/new");
   } catch (error) {
     console.error(error);
     res.status(500).send("An error occurred while creating the disc");
@@ -111,7 +111,6 @@ async function deleteDisc(req, res) {
       console.log("Disc not found");
       return res.status(404).send("Disc not found");
     }
-
     if (disc.bag) {
       const bag = await Bag.findById(disc.bag);
       console.log(bag);

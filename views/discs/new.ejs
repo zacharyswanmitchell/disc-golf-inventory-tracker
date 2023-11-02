@@ -4,28 +4,28 @@
 
 <form action="/discs" method="POST">
   <label for="brand">Brand*</label>
-  <input type="text" name="brand" id="brand" />
+  <input type="text" name="brand" id="brand" pattern="^[a-zA-Z0-9]+$" />
   <br />
   <label for="name">Name*</label>
-  <input type="text" name="name" id="name" />
+  <input type="text" name="name" id="name" pattern="^[a-zA-Z0-9]+$" />
   <br />
   <label for="type">Type*</label>
-  <input type="text" name="type" id="type" />
+  <input type="text" name="type" id="type" pattern="^[a-zA-Z0-9]+$" />
   <br />
   <label for="color">Color*</label>
-  <input type="text" name="color" id="color" />
+  <input type="text" name="color" id="color" pattern="^[a-zA-Z0-9]+$" />
   <br />
   <label for="speed">Speed</label>
-  <input type="number" name="speed" id="speed" />
+  <input type="number" name="speed" id="speed" step="0.1" />
   <br />
   <label for="glide">Glide</label>
-  <input type="number" name="glide" id="glide" />
+  <input type="number" name="glide" id="glide" step="0.1" />
   <br />
   <label for="turn">Turn</label>
-  <input type="number" name="turn" id="turn" />
+  <input type="number" name="turn" id="turn" step="0.1" />
   <br />
   <label for="fade">Fade</label>
-  <input type="number" name="fade" id="fade" />
+  <input type="number" name="fade" id="fade" step="0.1" />
   <br />
   
   <label for="bag">Bag</label>
