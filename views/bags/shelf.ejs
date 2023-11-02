@@ -1,6 +1,6 @@
 <%- include('../partials/header') %>
 
-<h2>Shelf:</h2>
+<h2><%= title %></h2>
 <% if (user.shelf.discs) { %>
 <div class="disc-grid">
   <% user.shelf.discs.forEach(d => { %>

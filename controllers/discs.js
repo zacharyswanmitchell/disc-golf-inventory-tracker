@@ -84,7 +84,9 @@ async function update(req, res) {
     } else {
       const newBag = await Bag.findById(req.body.bag);
       if (newBag) {
-        newBag.discs.push(disc._id);
+        if (!newBag.discs.includes(disc._id)) {
+          newBag.discs.push(disc._id);
+        }
         await newBag.save();
       } else {
         return res.status(400).send("Invalid bag ID");
