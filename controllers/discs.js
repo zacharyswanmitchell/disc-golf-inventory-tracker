@@ -66,8 +66,8 @@ async function update(req, res) {
     let disc = await Disc.findById(req.params.id);
     const user = await User.findById(req.user._id);
     const shelf = user.shelf;
-    console.log("req.body.bag:", req.body.bag);
-    console.log("shelf._id.toString():", shelf._id.toString());
+    // console.log("req.body.bag:", req.body.bag);
+    // console.log("shelf._id.toString():", shelf._id.toString());
     if (disc.bag && disc.bag.toString() !== req.body.bag) {
       const oldBag = await Bag.findById(disc.bag);
       if (oldBag) {
@@ -89,6 +89,11 @@ async function update(req, res) {
       } else {
         return res.status(400).send("Invalid bag ID");
       }
+    }
+    // If the disc is in the shelf, remove it
+    if (shelf.discs.includes(disc._id)) {
+      shelf.discs.remove(disc._id);
+      await user.save();
     }
     Object.assign(disc, req.body);
     await disc.save();
