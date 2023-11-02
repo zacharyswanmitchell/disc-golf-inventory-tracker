@@ -3,7 +3,7 @@
 <h1><%= title %></h1>
 
 
-<form method="POST" action="/discs/<%= disc.id %>?_method=PUT">
+<form class="edit-disc-form" method="POST" action="/discs/<%= disc.id %>?_method=PUT">
   <label for="brand">Disc Name: </label>
   <input type="text" name="name" id="name" pattern="^[a-zA-Z0-9 &-]+$" value="<%= disc.name %>"/>
   <br />

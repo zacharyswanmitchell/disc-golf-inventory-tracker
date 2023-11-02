@@ -2,27 +2,28 @@
 
 <h1><%= title %></h1>
 <h2>Bag Name: <%= bag.name %></h2>
-<h2>Color: <%= bag.color %></h2>
+<h2>Color: <section style="width: 50px; height: 20px; background-color: <%= bag.color %>;"></section></h2>
 <h2>Capacity: <%= bag.capacity %></h2>
 <h2>Image: <%= bag.image %></h2>
 <h2>Discs</h2>
 <% if (bag.discs.length) { %>
 <div class="disc-grid">
   <% bag.discs.forEach(d => { %>
-  <div class="disc" style="background-color: <%= d.color %>">
-    <h3><%= d.name %></h3>
-    <p><%= d.brand %></p>
-    <p><%= d.type %></p>
-    <div class="button-group">
-      <form method="GET" action="/discs/<%= d.id %>">
-        <button type="submit">View</button>
-      </form>
-      <form method="GET" action="/discs/<%= d.id %>/edit">
-        <button type="submit">Edit</button>
-      </form>
-      <form method="POST" action="/discs/<%= d.id %>?_method=DELETE">
-        <button type="submit">Delete</button>
-      </form>
+    <div class="disc" style="background-color: <%= d.color %>">
+      <p><%= d.name %></p>
+      <p><%= d.brand %></p>
+      <p><%= d.type %></p>
+      <p><%= d.speed %>&nbsp;|&nbsp;<%= d.glide %>&nbsp;|&nbsp;<%= d.turn %>&nbsp;|&nbsp;<%= d.fade %></p>
+      <div class="button-group">
+        <form method="GET" action="/discs/<%= d.id %>">
+          <button type="submit">View</button>
+        </form>
+        <form method="GET" action="/discs/<%= d.id %>/edit">
+          <button type="submit">Edit</button>
+        </form>
+        <form method="POST" action="/discs/<%= d.id %>?_method=DELETE">
+          <button type="submit">Delete</button>
+        </form>
     </div>
   </div>
   <% }); %>
