@@ -9,26 +9,28 @@
       <thead>
         <tr>
           <th>Name</th>
-          <th>Brand</th>
           <th>Color</th>
           <th>Capacity</th>
-          <th>Image</th>
         </tr>
       </thead>
       <tbody>
         <% bags.forEach(function(bag) { %>
           <tr>
             <td><%= bag.name %></td>
-            <td><%= bag.brand %></td>
-            <td><%= bag.color %></td>
+            <td style="background-color: <%= bag.color %>"></td>
             <td><%= bag.capacity %></td>
-            <td><img src="<%= bag.image %>"></td>
             <td>
-              <a href="/bags/<%= bag.id %>">View</a>
-              <a href="/bags/<%= bag.id %>/edit">Edit</a>
-              <form method="POST" action="/bags/<%= bag.id %>?_method=DELETE">
-                <button type="submit">Delete</button>
-              </form>
+              <div class="bag-buttons">
+                <form method="GET" action="/bags/<%= bag.id %>">
+                  <button type="submit">View</button>
+                </form>
+                <form method="GET" action="/bags/<%= bag.id %>/edit">
+                  <button type="submit">Edit</button>
+                </form>
+                <form method="POST" action="/bags/<%= bag.id %>?_method=DELETE">
+                  <button type="submit">Delete</button>
+                </form>
+              </div>
             </td>
           </tr>
         <% }) %>
