@@ -58,6 +58,10 @@ async function edit(req, res) {
   const shelf = await User.findById(req.user._id).shelf;
   const disc = await Disc.findById(req.params.id);
   const bags = await Bag.find({});
+  disc.speed = Number(disc.speed);
+  disc.glide = Number(disc.glide);
+  disc.turn = Number(disc.turn);
+  disc.fade = Number(disc.fade);
   res.render("discs/edit", { title: "Edit Disc", disc, bags, shelf });
 }
 

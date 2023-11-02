@@ -5,32 +5,32 @@
 
 <form method="POST" action="/discs/<%= disc.id %>?_method=PUT">
   <label for="brand">Disc Name: </label>
-  <input type="text" name="name" id="name" value="<%= disc.name %> " />
+  <input type="text" name="name" id="name" pattern="^[a-zA-Z0-9 &-]+$" value="<%= disc.name %>" />
   <br />
   <label for="brand">Brand: </label>
-  <input type="text" name="brand" id="brand" value="<%= disc.brand %> " />
+  <input type="text" name="brand" id="brand" pattern="^[a-zA-Z0-9 &-]+$" value="<%= disc.brand %>" />
   <br />
   <label for="type">Type: </label>
-  <input type="text" name="type" id="type" value="<%= disc.type %> " />
+  <input type="text" name="type" id="type" pattern="^[a-zA-Z0-9 &-]+$" value="<%= disc.type %>" />
   <br />
   <label for="color">Color: </label>
-  <input type="text" name="color" id="color" value="<%= disc.color %> " />
+  <input type="text" name="color" id="color" pattern="^[a-zA-Z0-9 &-]+$" value="<%= disc.color %>" />
   <br />
   <label for="speed">Speed: </label>
-  <input type="number" name="speed" id="speed" value="<%= disc.speed %> " />
+  <input type="number" name="speed" id="speed" step="0.1" value="<%= disc.speed %>" />
   <br />
   <label for="glide">Glide: </label>
-  <input type="number" name="glide" id="glide" value="<%= disc.glide %> " />
+  <input type="number" name="glide" id="glide" step="0.1" value="<%= disc.glide %>" />
   <br />
   <label for="turn">Turn: </label>
-  <input type="number" name="turn" id="turn" value="<%= disc.turn %> " />
+  <input type="number" name="turn" id="turn" step="0.1" value="<%= disc.turn %>" />
   <br />
   <label for="fade">Fade: </label>
-  <input type="number" name="fade" id="fade" value="<%= disc.fade %> " />
+  <input type="number" name="fade" id="fade" step="0.1" value="<%= disc.fade %>" />
   <br />
-  <label for="image">Image: </label>
+  <!-- <label for="image">Image: </label>
   <input type="file" name="image" id="image" value="<%= disc.image %> " />
-  <br />
+  <br /> -->
   <h2>
     Bag: <% if (disc.bag) { %><%= disc.bag.name %><% } else { %>None<% } %>
   </h2>
