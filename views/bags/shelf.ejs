@@ -2,36 +2,29 @@
 
 <h2>Shelf:</h2>
 <% if (user.shelf.discs) { %>
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Brand</th>
-      <th>Type</th>
-      <th>Color</th>
-      <th>Image</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% user.shelf.discs.forEach(d => { %>
-    <tr>
-      <td><%= d.name %></td>
-      <td><%= d.brand %></td>
-      <td><%= d.type %></td>
-      <td><%= d.color %></td>
-      <td>
-        <a href="/discs/<%= d.id %>">View</a>
-        <a href="/discs/<%= d.id %>/edit">Edit</a>
-        <form method="POST" action="/discs/<%= d.id %>?_method=DELETE">
-          <button type="submit">Delete</button>
-        </form>
-    </tr>
-    <% }); %>
-  </tbody>
-</table>
+<div class="disc-grid">
+  <% user.shelf.discs.forEach(d => { %>
+  <div class="disc" style="background-color: <%= d.color %>;">
+    <p><%= d.name %></p>
+    <p><%= d.brand %></p>
+    <p><%= d.type %></p>
+    <div class="button-group">
+      <form method="GET" action="/discs/<%= d.id %>">
+        <button type="submit">View</button>
+      </form>
+      <form method="GET" action="/discs/<%= d.id %>/edit">
+        <button type="submit">Edit</button>
+      </form>
+      <form method="POST" action="/discs/<%= d.id %>?_method=DELETE">
+        <button type="submit">Delete</button>
+      </form>
+    </div>
+  </div>
+  <% }); %>
+</div>
 <% } else { %>
 <p>No discs on this shelf</p>
 <% } %>
 
-  <%- include('../partials/footer') %>
 
+<%- include('../partials/footer') %>

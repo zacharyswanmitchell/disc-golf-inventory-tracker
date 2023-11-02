@@ -58,10 +58,6 @@ async function edit(req, res) {
   const shelf = await User.findById(req.user._id).shelf;
   const disc = await Disc.findById(req.params.id);
   const bags = await Bag.find({});
-  disc.speed = Number(disc.speed);
-  disc.glide = Number(disc.glide);
-  disc.turn = Number(disc.turn);
-  disc.fade = Number(disc.fade);
   res.render("discs/edit", { title: "Edit Disc", disc, bags, shelf });
 }
 
@@ -84,7 +80,7 @@ async function update(req, res) {
         shelf.discs.push(disc._id);
       }
       await user.save();
-      console.log(user);
+      // console.log(user);
     } else {
       const newBag = await Bag.findById(req.body.bag);
       if (newBag) {
@@ -93,11 +89,11 @@ async function update(req, res) {
       } else {
         return res.status(400).send("Invalid bag ID");
       }
+      if (shelf.discs.includes(disc._id)) {
+        shelf.discs.remove(disc._id);
+        await user.save();
     }
     // If the disc is in the shelf, remove it
-    if (shelf.discs.includes(disc._id)) {
-      shelf.discs.remove(disc._id);
-      await user.save();
     }
     Object.assign(disc, req.body);
     await disc.save();

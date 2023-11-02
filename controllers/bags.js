@@ -59,3 +59,4 @@ async function shelf(req, res) {
   const shelf = user.shelf;
   res.render("bags/shelf", { title: "My Shelf", user });
 }
+

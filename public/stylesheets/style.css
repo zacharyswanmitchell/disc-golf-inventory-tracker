@@ -1,14 +1,71 @@
 body {
   padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  background-color: #f5f5dc; /* Beige */
 }
 
 a {
-  color: #00B7FF;
+  color: #8b4513; /* SaddleBrown */
 }
-
 
 .login img {
-  height: 30px;
+  vertical-align: middle;
+  width: 20px;
+  height: 20px;
 }
 
+nav {
+  background-color: #aa8c65; /* Tan */
+  color: #fff;
+  padding: 15px;
+  border-radius: 3px;
+}
+
+nav a {
+  color: #fff;
+  text-decoration: none;
+  margin: 0 10px;
+}
+
+nav a:hover {
+  color: #a0522d; /* Sienna */
+}
+
+.buttons {
+  display: flex;
+  gap: 10px;
+}
+
+button {
+  background-color: #aa8c65; /* Tan */
+  color: #fff;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 3px;
+  cursor: pointer;
+  display: flex;
+  gap: 10px;
+}
+
+.disc-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 20px;
+}
+
+.disc {
+  padding: 20px;
+  border-radius: 50%;
+  color: #fff;
+  text-align: center;
+  position: relative;
+}
+
+.button-group {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 10px;
+}
