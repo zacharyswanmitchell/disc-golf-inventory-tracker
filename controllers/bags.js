@@ -30,6 +30,9 @@ async function show(req, res) {
 async function create(req, res) {
   const bag = new Bag(req.body);
   await bag.save();
+  const user = await User.findById(req.user._id);
+  user.bags.push(bag._id);
+  await user.save();
   res.redirect("/bags");
 }
 
@@ -46,9 +49,14 @@ async function update(req, res) {
 async function deleteBag(req, res) {
   const bag = await Bag.findById(req.params.id);
   if (bag.discs.length > 0) {
+    const user = await User.findById(req.user._id);
+    user.bags.pull(bag._id);
+    await user.save();
     const disc = await Disc.findById(bag.discs[0]);
     disc.bag = req.user.shelf;
     await disc.save();
+    user.shelf.discs.push(disc._id); // Add the disc to the user's shelf
+    await user.save();
   }
   await Bag.findByIdAndDelete(req.params.id);
   res.redirect("/bags");

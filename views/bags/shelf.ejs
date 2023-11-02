@@ -4,10 +4,11 @@
 <% if (user.shelf.discs) { %>
 <div class="disc-grid">
   <% user.shelf.discs.forEach(d => { %>
-  <div class="disc" style="background-color: <%= d.color %>;">
+  <div class="disc" style="background-color: <%= d.color %>">
     <p><%= d.name %></p>
     <p><%= d.brand %></p>
     <p><%= d.type %></p>
+    <p><%= d.speed %>&nbsp;|&nbsp;<%= d.glide %>&nbsp;|&nbsp;<%= d.turn %>&nbsp;|&nbsp;<%= d.fade %></p>
     <div class="button-group">
       <form method="GET" action="/discs/<%= d.id %>">
         <button type="submit">View</button>
@@ -24,7 +25,4 @@
 </div>
 <% } else { %>
 <p>No discs on this shelf</p>
-<% } %>
-
-
-<%- include('../partials/footer') %>
+<% } %> <%- include('../partials/footer') %>
