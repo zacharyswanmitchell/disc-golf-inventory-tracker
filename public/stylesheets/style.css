@@ -1,11 +1,11 @@
 body {
   padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-  background-color: #f5f5dc; /* Beige */
+  background-color: #f5f5dc;
 }
 
 a {
-  color: #8b4513; /* SaddleBrown */
+  color: #8b4513;
 }
 
 .login img {
@@ -14,8 +14,9 @@ a {
   height: 20px;
 }
 
+
 nav {
-  background-color: #aa8c65; /* Tan */
+  background-color: #aa8c65;
   color: #fff;
   padding: 15px;
   border-radius: 3px;
@@ -28,7 +29,19 @@ nav a {
 }
 
 nav a:hover {
-  color: #a0522d; /* Sienna */
+  color: #a0522d;
+}
+
+@media screen and (max-width: 375px) {
+  nav {
+    padding: 10px;
+  }
+
+  nav a {
+    margin: 0 0px;
+    padding: 0px 0px 0px 0px;
+    
+  }
 }
 
 .buttons {
@@ -37,7 +50,7 @@ nav a:hover {
 }
 
 button {
-  background-color: #aa8c65; /* Tan */
+  background-color: #aa8c65;
   color: #fff;
   border: none;
   padding: 5px 10px;
@@ -51,9 +64,12 @@ button {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
   gap: 20px;
+  
 }
 
 .disc {
+  height: 150px;
+  width: 150px;
   padding: 20px;
   border-radius: 50%;
   color: #fff;
@@ -62,17 +78,16 @@ button {
   position: relative;
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  justify-self: center;
 }
 
 .button-group {
   position: absolute;
   border-radius: 5px;
-  /* bottom: 5px; */
   left: 50%;
   transform: translateX(-50%);
   display: flex;
   gap: 10px;
-  /* box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.2); */
 }
 
 .bag-buttons {
@@ -156,10 +171,25 @@ button {
 
 #sortForm{
   padding: 0px 0px 10px 0px;
+  font-size: large;
 }
 
 #sortForm select{
   width: 100px;
   border-radius: 5px;
   padding: 1px;
+  font-size: large;
 }
+/* Style the table */
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+/* Style the table cells */
+td {
+  padding: 10px;
+  border: 1px solid #ddd;
+  text-align: left;
+}
+

@@ -15,11 +15,11 @@
       </thead>
       <tbody>
         <% bags.forEach(function(bag) { %>
-          <tr>
-            <td><%= bag.name %></td>
+          <tr class="bag-row">
+            <td><%= bag.name %></a></td>
             <td style="background-color: <%= bag.color %>"></td>
-            <td><%= bag.capacity %></td>
-            <td>
+            <td><%= bag.discs.length %>/<%= bag.capacity %></td>
+            <td class="bag-actions">
               <div class="bag-buttons">
                 <form method="GET" action="/bags/<%= bag.id %>">
                   <button type="submit">View</button>
