@@ -1,3 +1,5 @@
+
+
 body {
   padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
@@ -82,12 +84,14 @@ button {
 }
 
 .button-group {
+  margin-top: 20px;
   position: absolute;
   border-radius: 5px;
   left: 50%;
   transform: translateX(-50%);
   display: flex;
   gap: 10px;
+  
 }
 
 .bag-buttons {
@@ -104,11 +108,12 @@ button {
 .edit-disc-form,
 .new-disc-form,
 .new-bags-form {
+  box-sizing: border-box;
   display: flex;
   flex-direction: column;
   max-width: 300px;
   margin: 0 auto;
-  padding: 10px 10px;
+  padding: 5px 10px;
   border-radius: 5px;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
 }
@@ -117,7 +122,9 @@ button {
 .edit-disc-form label,
 .new-disc-form label,
 .new-bags-form label {
+  margin-top: 0;
   margin-bottom: 5px;
+
 }
 
 .edit-bags-form input,
@@ -163,10 +170,10 @@ button {
   border-radius: 5px;
   border: 1px solid #ccc;
   margin-bottom: 1px;
-  width: 100%; /* Make the select element take up the full width of the form */
-  font-size: 16px; /* Increase the font size for better readability */
-  appearance: none; /* Remove default browser styling */
-  background-color: #dddcdc; /* Set a background color */
+  width: 100%;
+  font-size: 16px;
+  appearance: none;
+  background-color: #dddcdc;
 }
 
 #sortForm{
@@ -180,16 +187,36 @@ button {
   padding: 1px;
   font-size: large;
 }
-/* Style the table */
+
 table {
   width: 100%;
   border-collapse: collapse;
 }
 
-/* Style the table cells */
 td {
   padding: 10px;
   border: 1px solid #ddd;
   text-align: left;
 }
 
+.bag-details {
+  display: flex;
+  flex-direction: column;
+  max-width: 100vw;
+  margin: 0 auto;
+  padding: 0px 10px;
+  border-radius: 5px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+.bag-details > h1, h2 {
+  margin-bottom: 5px;
+  padding: 0px;
+}
+
+.alert {
+  color: #100000;
+  padding: 5px;
+  margin-bottom: 5px;
+  font-weight: bold; 
+  text-align: center; 
+}

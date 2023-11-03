@@ -21,5 +21,10 @@
     <br /> -->
     <input type="submit" value="Update Bag" />
 </form>
+<br>
+
+<form method="POST" action="/bags/<%= bag.id %>?_method=DELETE">
+    <button type="submit">Delete</button>
+  </form>
     
 <%- include('../partials/footer') %>

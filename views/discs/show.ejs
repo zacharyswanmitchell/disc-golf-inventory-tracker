@@ -1,17 +1,23 @@
 <%- include('../partials/header') %>
 
-<h1><%= title %></h1>
-<h2>Disc Name: <%= disc.name %></h2>
-<h2>Brand: <%= disc.brand %></h2>
-<h2>Type: <%= disc.type %></h2>
-<h2>Color: <section style="background-color: <%= disc.color %>"></section></h2>
-<h2>Speed: <%= disc.speed %></h2>
-<h2>Glide: <%= disc.glide %></h2>
-<h2>Turn: <%= disc.turn %></h2>
-<h2>Fade: <%= disc.fade %></h2>
-<h2>Image: <%= disc.image %></h2>
-<h2>Bag: <% if (disc.bag) { %><%= disc.bag.name %><% } else { %>Shelf<% } %></h2>
-<a href="/discs/<%= disc.id %>/edit">Edit</a>
+<div>
+  <h1><%= title %></h1>
+  <h2>Disc Name: <%= disc.name %></h2>
+  <h2>Brand: <%= disc.brand %></h2>
+  <h2>Type: <%= disc.type %></h2>
+  <h2>Color: <section style="width: 50px; height: 20px; background-color: <%= disc.color %>;"></section></h2>
+  <h2>Speed: <%= disc.speed %></h2>
+  <h2>Glide: <%= disc.glide %></h2>
+  <h2>Turn: <%= disc.turn %></h2>
+  <h2>Fade: <%= disc.fade %></h2>
+  <h2>Image: <%= disc.image %></h2>
+  <h2>Bag: <% if (disc.bag) { %><%= disc.bag.name %><% } else { %>Shelf<% } %></h2>
+</div>
+<div>
+  <form method="GET" action="/discs/<%= disc.id %>/edit">
+    <button type="submit">Edit</button>
+  </form>
+</div>
 
 
 

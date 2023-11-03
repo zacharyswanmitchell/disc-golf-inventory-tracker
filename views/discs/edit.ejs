@@ -43,5 +43,9 @@
   <br />
   <input type="submit" value="Update Disc" />
 </form>
+<br>
+<form method="POST" action="/discs/<%= disc.id %>?_method=DELETE">
+  <button type="submit">Delete</button>
+</form>
 
 <%- include('../partials/footer') %>

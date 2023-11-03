@@ -1,11 +1,11 @@
 <%- include('../partials/header') %>
-
-<h1><%= title %></h1>
-<h2>Bag Name: <%= bag.name %></h2>
-<h2>Color: <section style="width: 50px; height: 20px; background-color: <%= bag.color %>;"></section></h2>
-<h2>Capacity: <%= bag.capacity %></h2>
-<h2>Image: <%= bag.image %></h2>
-<h2>Discs</h2>
+<div class="bag-details">
+  <h1><%= title %></h1>
+  <h2>Bag Name: <%= bag.name %></h2>
+  <h2>Color: <section style="width: 50px; height: 20px; background-color: <%= bag.color %>;"></section></h2>
+  <h2>Capacity: <%= bag.discs.length %>/<%= bag.capacity %></h2>
+  <h2>Discs</h2>
+</div>
 <form id="sortForm" action="/bags/<%= bag._id %>" method="GET">
   <select name="sortby" onchange="document.getElementById('sortForm').submit();">
     <option value="name" <%= sortby === 'name' ? 'selected' : '' %>>Name</option>
@@ -31,9 +31,6 @@
         </form>
         <form method="GET" action="/discs/<%= d.id %>/edit">
           <button type="submit">Edit</button>
-        </form>
-        <form method="POST" action="/discs/<%= d.id %>?_method=DELETE">
-          <button type="submit">Delete</button>
         </form>
     </div>
   </div>

@@ -1,42 +1,49 @@
 <%- include('../partials/header') %>
-
-<h1>New Disc</h1>
-
-<form class="new-disc-form" action="/discs" method="POST">
-  <label for="brand">Brand*</label>
-  <input type="text" name="brand" id="brand" pattern="^[a-zA-Z0-9 &-]+$"/>
-  <br />
-  <label for="name">Name*</label>
-  <input type="text" name="name" id="name" pattern="^[a-zA-Z0-9 &-]+$"/>
-  <br />
-  <label for="type">Type*</label>
-  <input type="text" name="type" id="type" pattern="^[a-zA-Z0-9 &-]+$"/>
-  <br />
-  <label for="color">Color*</label>
-  <input type="color" name="color" id="color"/>
-  <br />
-  <label for="speed">Speed</label>
-  <input type="number" name="speed" id="speed" step="0.1"/>
-  <br />
-  <label for="glide">Glide</label>
-  <input type="number" name="glide" id="glide" step="0.1"/>
-  <br />
-  <label for="turn">Turn</label>
-  <input type="number" name="turn" id="turn" step="0.1"/>
-  <br />
-  <label for="fade">Fade</label>
-  <input type="number" name="fade" id="fade" step="0.1"/>
-  <br />
+<body>
+  <% if (locals.message) { %>
+    <div class="alert">
+      <%= locals.message %>
+    </div>
+  <% } %>
   
-  <label for="bag">Bag</label>
-  <select name="bag" id="bag">
-    <option value="<%= user.shelf._id %>">Shelf</option>
-    <% for (let i = 0; i < bags.length; i++) { %>
-      <option value="<%= bags[i]._id %>"><%= bags[i].name %></option>
-    <% } %>
-  </select>
-  <br />
-  <input type="submit" value="Add Disc" />
-</form> 
-
-<%- include('../partials/footer') %>
+  <h1>New Disc</h1>
+  
+  <form class="new-disc-form" action="/discs" method="POST">
+    <label for="brand">Brand*</label>
+    <input type="text" name="brand" id="brand" pattern="^[a-zA-Z0-9 &-]+$"/>
+    <br />
+    <label for="name">Name*</label>
+    <input type="text" name="name" id="name" pattern="^[a-zA-Z0-9 &-]+$"/>
+    <br />
+    <label for="type">Type*</label>
+    <input type="text" name="type" id="type" pattern="^[a-zA-Z0-9 &-]+$"/>
+    <br />
+    <label for="color">Color*</label>
+    <input type="color" name="color" id="color"/>
+    <br />
+    <label for="speed">Speed</label>
+    <input type="number" name="speed" id="speed" step="0.1"/>
+    <br />
+    <label for="glide">Glide</label>
+    <input type="number" name="glide" id="glide" step="0.1"/>
+    <br />
+    <label for="turn">Turn</label>
+    <input type="number" name="turn" id="turn" step="0.1"/>
+    <br />
+    <label for="fade">Fade</label>
+    <input type="number" name="fade" id="fade" step="0.1"/>
+    <br />
+    
+    <label for="bag">Bag</label>
+    <select name="bag" id="bag">
+      <option value="<%= user.shelf._id %>">Shelf</option>
+      <% for (let i = 0; i < bags.length; i++) { %>
+        <option value="<%= bags[i]._id %>"><%= bags[i].name %></option>
+        <% } %>
+      </select>
+      <br />
+      <input type="submit" value="Add Disc" />
+    </form> 
+  </body>
+    
+    <%- include('../partials/footer') %>

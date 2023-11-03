@@ -20,7 +20,7 @@ async function index(req, res) {
 async function newDisc(req, res) {
   const bags = await Bag.find({});
   const shelf = await User.findById(req.user._id).shelf;
-  res.render("discs/new", { title: "Add Disc", bags, shelf });
+  res.render("discs/new", { title: "Add Disc", bags, shelf, message: req.flash('message') });
 }
 
 async function show(req, res) {
@@ -34,6 +34,7 @@ async function create(req, res) {
     const shelf = user.shelf;
     const disc = new Disc(req.body);
     await disc.save();
+    req.flash('message', 'Disc created successfully!'); // Add flash message
     if (req.body.bag === shelf._id.toString()) {
       if (!shelf.discs.includes(disc._id)) {
         shelf.discs.push(disc._id);
