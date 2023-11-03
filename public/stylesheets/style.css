@@ -61,17 +61,18 @@ button {
   text-align: center;
   position: relative;
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 .button-group {
   position: absolute;
   border-radius: 5px;
-  bottom: 5px;
+  /* bottom: 5px; */
   left: 50%;
   transform: translateX(-50%);
   display: flex;
   gap: 10px;
-  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+  /* box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.2); */
 }
 
 .bag-buttons {
@@ -151,4 +152,14 @@ button {
   font-size: 16px; /* Increase the font size for better readability */
   appearance: none; /* Remove default browser styling */
   background-color: #dddcdc; /* Set a background color */
+}
+
+#sortForm{
+  padding: 0px 0px 10px 0px;
+}
+
+#sortForm select{
+  width: 100px;
+  border-radius: 5px;
+  padding: 1px;
 }

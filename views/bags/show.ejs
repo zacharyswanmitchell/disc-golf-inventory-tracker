@@ -6,6 +6,17 @@
 <h2>Capacity: <%= bag.capacity %></h2>
 <h2>Image: <%= bag.image %></h2>
 <h2>Discs</h2>
+<form id="sortForm" action="/bags/<%= bag._id %>" method="GET">
+  <select name="sortby" onchange="document.getElementById('sortForm').submit();">
+    <option value="name" <%= sortby === 'name' ? 'selected' : '' %>>Name</option>
+    <option value="type" <%= sortby === 'type' ? 'selected' : '' %>>Type</option>
+    <option value="brand" <%= sortby === 'brand' ? 'selected' : '' %>>Brand</option>
+    <option value="speed" <%= sortby === 'speed' ? 'selected' : '' %>>Speed</option>
+    <option value="glide" <%= sortby === 'glide' ? 'selected' : '' %>>Glide</option>
+    <option value="turn" <%= sortby === 'turn' ? 'selected' : '' %>>Turn</option>
+    <option value="fade" <%= sortby === 'fade' ? 'selected' : '' %>>Fade</option>
+  </select>
+</form>
 <% if (bag.discs.length) { %>
 <div class="disc-grid">
   <% bag.discs.forEach(d => { %>
