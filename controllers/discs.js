@@ -18,8 +18,10 @@ async function index(req, res) {
 }
 
 async function newDisc(req, res) {
+  // Get the bags and shelf
   const bags = await Bag.find({});
   const shelf = await User.findById(req.user._id).shelf;
+  // Render the new disc page with message
   res.render("discs/new", { title: "Add Disc", bags, shelf, message: req.flash('message') });
 }
 
@@ -36,12 +38,13 @@ async function create(req, res) {
     await disc.save();
     req.flash('message', 'Disc created successfully!'); // Add flash message
     if (req.body.bag === shelf._id.toString()) {
+      // If the disc is not in the shelf, add it
       if (!shelf.discs.includes(disc._id)) {
         shelf.discs.push(disc._id);
       }
       await user.save();
-      console.log(user);
     } else {
+      // Add the disc to the bag
       const bag = await Bag.findById(req.body.bag);
       if (bag) {
         bag.discs.push(disc);
@@ -56,6 +59,7 @@ async function create(req, res) {
 }
 
 async function edit(req, res) {
+  // Get the disc, shelf, and bags
   const shelf = await User.findById(req.user._id).shelf;
   const disc = await Disc.findById(req.params.id);
   const bags = await Bag.find({});
@@ -64,11 +68,11 @@ async function edit(req, res) {
 
 async function update(req, res) {
   try {
+    // Find the disc with ID, bag, and user
     let disc = await Disc.findById(req.params.id);
     const user = await User.findById(req.user._id);
     const shelf = user.shelf;
-    // console.log("req.body.bag:", req.body.bag);
-    // console.log("shelf._id.toString():", shelf._id.toString());
+    // If the disc is in a bag, remove it
     if (disc.bag && disc.bag.toString() !== req.body.bag) {
       const oldBag = await Bag.findById(disc.bag);
       if (oldBag) {
@@ -76,22 +80,25 @@ async function update(req, res) {
         await oldBag.save();
       }
     }
+    // If the disc is in the shelf, remove it
     if (req.body.bag === shelf._id.toString()) {
       if (!shelf.discs.includes(disc._id)) {
         shelf.discs.push(disc._id);
       }
       await user.save();
-      // console.log(user);
     } else {
+      // Add the disc to the new bag
       const newBag = await Bag.findById(req.body.bag);
       if (newBag) {
+        // If the disc is not already in the bag, add it
         if (!newBag.discs.includes(disc._id)) {
           newBag.discs.push(disc._id);
         }
         await newBag.save();
       } else {
         return res.status(400).send("Invalid bag ID");
-      }
+      } 
+      // If the disc is in the shelf, remove it
       if (shelf.discs.includes(disc._id)) {
         shelf.discs.remove(disc._id);
         await user.save();
@@ -114,6 +121,7 @@ async function deleteDisc(req, res) {
       console.log("Disc not found");
       return res.status(404).send("Disc not found");
     }
+    // If the disc is in a bag, remove it
     if (disc.bag) {
       const bag = await Bag.findById(disc.bag);
       console.log(bag);
