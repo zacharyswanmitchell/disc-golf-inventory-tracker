@@ -34,15 +34,21 @@ nav a:hover {
   color: #a0522d;
 }
 
-@media screen and (max-width: 375px) {
+@media screen and (max-width: 390px) {
+
   nav {
-    padding: 10px;
   }
 
   nav a {
     margin: 0 0px;
     padding: 0px 0px 0px 0px;
     
+  }
+
+  .disc-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 20px;
   }
 }
 
@@ -66,7 +72,6 @@ button {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
   gap: 20px;
-  
 }
 
 .disc {
@@ -207,7 +212,6 @@ td {
   margin: 0 auto;
   padding: 0px 10px;
   border-radius: 5px;
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
 }
 
 .bag-details > h1, h2 {
