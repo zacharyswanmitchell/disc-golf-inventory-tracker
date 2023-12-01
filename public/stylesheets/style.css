@@ -191,12 +191,13 @@ button {
 table {
   width: 100%;
   border-collapse: collapse;
+  border: none;
 }
 
 td {
   padding: 10px;
-  border: 1px solid #ddd;
-  text-align: left;
+  text-align: center;
+  border: none;
 }
 
 .bag-details {
@@ -208,9 +209,20 @@ td {
   border-radius: 5px;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
 }
+
 .bag-details > h1, h2 {
   margin-bottom: 5px;
   padding: 0px;
+}
+
+.bag-list {
+  max-width: 75vw;
+  margin: 0 auto;
+  padding: 10px;
+}
+
+.bag-row {
+  
 }
 
 .alert {
