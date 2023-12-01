@@ -216,14 +216,17 @@ td {
 }
 
 .bag-list {
-  max-width: 75vw;
+  max-width: 95vw;
   margin: 0 auto;
   padding: 10px;
 }
 
-.bag-row {
-  
+.bag-header {
+  align-items: center;
+  margin: 10px 10px;
 }
+
+
 
 .alert {
   color: #100000;

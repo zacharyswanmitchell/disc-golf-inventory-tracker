@@ -7,7 +7,7 @@
   <% } else { %>
     <table class="bag-list">
       <thead>
-        <tr>
+        <tr class="bag-header">
           <th>Name</th>
           <th>Color</th>
           <th>Capacity</th>
@@ -17,7 +17,7 @@
         <% bags.forEach(function(bag) { %>
           <tr class="bag-row">
             <td><%= bag.name %></a></td>
-            <td style="background-color: <%= bag.color %>"></td>
+            <td style="background-color: <%= bag.color %>"  ></td>
             <td><%= bag.discs.length %>/<%= bag.capacity %></td>
             <td class="bag-actions">
               <div class="bag-buttons">
