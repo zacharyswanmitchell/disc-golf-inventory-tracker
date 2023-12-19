@@ -22,7 +22,7 @@ A disc golf inventory app that allows you to keep track of your bags and discs. 
 
 # Getting Started
 
-(your deployment url here)
+Visit the site [here](https://disc-golf-inventory-manager-230ba0ac5328.herokuapp.com/)
 
 # Next Steps
 
