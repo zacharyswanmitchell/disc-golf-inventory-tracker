@@ -9,6 +9,7 @@ const BagSchema = new Schema(
         capacity: { type: Number, required: true },
         icon: { type: String },
         discs: [{ type: Schema.Types.ObjectId, ref: "Disc" }],
+        user: { type: Schema.Types.ObjectId, ref: "User" },
     },
     { timestamps: true }
 );
