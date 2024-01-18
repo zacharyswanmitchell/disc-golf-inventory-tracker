@@ -14,7 +14,7 @@ module.exports = {
 };
 
 async function index(req, res) {
-  const bags = await Bag.find({ });
+  const bags = await Bag.find({ user: req.user._id });
   res.render("bags/index", { title: "Bags", bags });
 }
 
@@ -34,6 +34,7 @@ async function show(req, res) {
 
 async function create(req, res) {
   const bag = new Bag(req.body);
+  bag.user = req.user._id;
   await bag.save();
   const user = await User.findById(req.user._id);
   // Add the bag to the user's bags array
