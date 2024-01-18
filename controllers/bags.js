@@ -14,7 +14,7 @@ module.exports = {
 };
 
 async function index(req, res) {
-  const bags = await Bag.find({});
+  const bags = await Bag.find({ });
   res.render("bags/index", { title: "Bags", bags });
 }
 
